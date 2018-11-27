@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bug{% endblock %}
+
+{% block body %}
+    <h1>Bug</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bug.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ bug.title }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ bug.slug }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ bug.code }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ bug.description }}</td>
+            </tr>
+            <tr>
+                <th>Timestamp</th>
+                <td>{{ bug.timestamp ? bug.timestamp|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Notation</th>
+                <td>{{ bug.notation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bug_index') }}">back to list</a>
+
+    <a href="{{ path('bug_edit', {'id': bug.id}) }}">edit</a>
+
+    {{ include('bug/_delete_form.html.twig') }}
+{% endblock %}

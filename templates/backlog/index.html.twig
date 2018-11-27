@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Backlog index{% endblock %}
+
+{% block body %}
+    <h1>Backlog index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Description</th>
+                <th>Timestamp</th>
+                <th>Notation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for backlog in backlogs %}
+            <tr>
+                <td>{{ backlog.id }}</td>
+                <td>{{ backlog.title }}</td>
+                <td>{{ backlog.slug }}</td>
+                <td>{{ backlog.description }}</td>
+                <td>{{ backlog.timestamp ? backlog.timestamp|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ backlog.notation }}</td>
+                <td>
+                    <a href="{{ path('backlog_show', {'id': backlog.id}) }}">show</a>
+                    <a href="{{ path('backlog_edit', {'id': backlog.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('backlog_new') }}">Create new</a>
+{% endblock %}
