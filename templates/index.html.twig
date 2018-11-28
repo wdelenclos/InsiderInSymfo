@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home | InsiderInSymfo{% endblock %}
+{% block menu %}
+    <nav class="uk-navbar-container uk-card uk-card-default" uk-navbar>
+            <div class="uk-navbar-left">
+                <img src="/assets/logo.png" width="26px" class="uk-margin-large-left uk-margin-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href="/bug"><span uk-icon="nut"></span></a></li>
+                    <li><a href="/backlog"><span uk-icon="tag"></span></a></li>
+
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href=""><span uk-icon="cog"></span></a></li>
+                    <li><a href="">Logout <span uk-icon="sign-out"></span></a></li>
+                </ul>
+            </div>
+    </nav>
+{% endblock %}
+{% block body %}
+    <div class="uk-container">
+        <div class="uk-margin-large-top">
+            <h2>Welcome Wladimir</h2>
+            <p>Here is a summary of the activity on the platform</p>
+            <hr class="uk-margin-medium-top uk-margin-medium-bottom"/>
+            <div class="uk-child-width-expand@s uk-margin-top" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <h5>Last bugs reports</h5>
+                        <ul class="uk-list uk-list-striped">
+                            <li>List item 1 <span class="uk-label"></span></li>
+                            <li>List item 2 <span class="uk-label"></span></li>
+                            <li>List item 3 <span class="uk-label"></span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <h5>Last backlog suggestions</h5>
+                        <ul class="uk-list uk-list-striped">
+                            <li>List item 1 <span class="uk-label"></span></li>
+                            <li>List item 2 <span class="uk-label"></span></li>
+                            <li>List item 3 <span class="uk-label"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
