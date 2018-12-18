@@ -20,7 +20,7 @@ class BacklogType extends AbstractType
             ->add('title', TextType::class)
             ->add('slug', TextType::class )
             ->add('description', TextType::class )
-            ->add('timestamp', TextType::class )
+            ->add('timestamp' )
             ->add('notation', IntegerType::class)
 	        ->add('status',  EntityType::class, array(
 		        'class' => Status::class,

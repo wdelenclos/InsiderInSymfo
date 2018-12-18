@@ -19,32 +19,12 @@ class BacklogRepository extends ServiceEntityRepository
         parent::__construct($registry, Backlog::class);
     }
 
-    // /**
-    //  * @return Backlog[] Returns an array of Backlog objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public function search($title){
+    	$qb = $this->createQueryBuilder('c')
+		    ->where('c.title LIKE :title')
+		    ->setParameter('title','%'. $title .'%')
+		    ->getQuery();
 
-    /*
-    public function findOneBySomeField($value): ?Backlog
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    	return $qb->getResult();
     }
-    */
 }

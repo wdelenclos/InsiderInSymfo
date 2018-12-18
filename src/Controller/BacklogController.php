@@ -87,4 +87,14 @@ class BacklogController extends AbstractController
 
         return $this->redirectToRoute('backlog_index');
     }
+
+	/**
+	 * @Route("/search/{title}", name="backlog_search", methods="GET|POST")
+	 */
+	public function search($title, BacklogRepository $backlog_repository ): Response
+	{
+		return $this->render('backlog/search.html.twig', [
+			'backlogs' => $backlog_repository->search($title),
+		]);
+	}
 }

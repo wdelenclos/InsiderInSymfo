@@ -1,11 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Backlog{% endblock %}
+{% block title %}Bug index{% endblock %}
+{% block menu %}
+    <nav class="uk-navbar-container uk-card uk-card-default" uk-navbar>
+        <div class="uk-navbar-left">
+            <img src="/assets/logo.png" width="26px" class="uk-margin-large-left uk-margin-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="/bug"><span uk-icon="album"></span></a></li>
+                <li><a href="/backlog"><span uk-icon="tag"></span></a></li>
 
-{% block body %}
-    <h1>Create new Backlog</h1>
-
-    {{ include('backlog/_form.html.twig') }}
-
-    <a href="{{ path('backlog_index') }}">back to list</a>
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li><a href=""><span uk-icon="cog"></span></a></li>
+                <li><a href="">Logout <span uk-icon="sign-out"></span></a></li>
+            </ul>
+        </div>
+    </nav>
 {% endblock %}
+{% block body %}
+    <div class="uk-container">
+        <div class="uk-margin-large-top">
+            <h3>Create a new functionality</h3>  <a href="{{ path('backlog_index') }}">back to backlog</a>
+            {{ include('backlog/_form.html.twig') }}
+
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
