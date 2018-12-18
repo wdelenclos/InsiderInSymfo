@@ -1,45 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Bug index{% endblock %}
+{% block menu %}
+    <nav class="uk-navbar-container uk-card uk-card-default" uk-navbar>
+        <div class="uk-navbar-left">
+            <img src="/assets/logo.png" width="26px" class="uk-margin-large-left uk-margin-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="/bug"><span uk-icon="album"></span></a></li>
+                <li><a href="/backlog"><span uk-icon="tag"></span></a></li>
 
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li><a href=""><span uk-icon="cog"></span></a></li>
+                <li><a href="">Logout <span uk-icon="sign-out"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
 {% block body %}
-    <h1>Bug index</h1>
+    <div class="uk-container">
+        <div class="uk-margin-large-top">
+            <h3>Bug index</h3>
+            <p>Here is the list of reported bugs</p> <a class="uk-button uk-button-default" href="{{ path('bug_new') }}">Report a bug</a>
+            <hr class="uk-margin-medium-top uk-margin-medium-bottom"/>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Slug</th>
-                <th>Code</th>
-                <th>Description</th>
-                <th>Timestamp</th>
-                <th>Notation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for bug in bugs %}
-            <tr>
-                <td>{{ bug.id }}</td>
-                <td>{{ bug.title }}</td>
-                <td>{{ bug.slug }}</td>
-                <td>{{ bug.code }}</td>
-                <td>{{ bug.description }}</td>
-                <td>{{ bug.timestamp ? bug.timestamp|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ bug.notation }}</td>
-                <td>
-                    <a href="{{ path('bug_show', {'id': bug.id}) }}">show</a>
-                    <a href="{{ path('bug_edit', {'id': bug.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('bug_new') }}">Create new</a>
+            <table class="uk-table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Timestamp</th>
+                    <th>Notation</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bug in bugs %}
+                    <tr>
+                        <td>{{ bug.id }}</td>
+                        <td>{{ bug.title }}</td>
+                        <td>{{ bug.slug }}</td>
+                        <td>{{ bug.code }}</td>
+                        <td>{{ bug.description }}</td>
+                        <td>{{ bug.timestamp ? bug.timestamp|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ bug.notation }}</td>
+                        <td>
+                            <a href="{{ path('bug_show', {'id': bug.id}) }}">show</a>
+                            <a href="{{ path('bug_edit', {'id': bug.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="uk-text-small" colspan="8">No bugs recorded</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

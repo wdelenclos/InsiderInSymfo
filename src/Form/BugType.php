@@ -18,7 +18,7 @@ class BugType extends AbstractType
             ->add('description')
             ->add('timestamp')
             ->add('notation')
-            ->add('status')
+            ->add('status' )
         ;
     }
 
